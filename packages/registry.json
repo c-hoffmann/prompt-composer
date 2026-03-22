@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "description": "Prompt Composer community package registry",
+    "format": "1.0",
+    "updated": "2026-03-22"
+  },
+  "packages": [
+    {
+      "id": "example-ml-pipeline",
+      "slug": "@prompt-composer/ml-pipeline",
+      "name": "ML Pipeline Prompts",
+      "author": "Prompt Composer Team",
+      "description": "Prompt templates for machine learning workflows: data preparation, model training, evaluation, deployment.",
+      "version": "1.0.0",
+      "types": 1,
+      "phases": 4,
+      "url": "https://raw.githubusercontent.com/YOUR_USERNAME/prompt-composer/main/packages/examples/ml-pipeline.json"
+    }
+  ]
+}

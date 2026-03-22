@@ -1,0 +1,22 @@
+# Build output
+dist/
+*.sha256
+
+# Dependencies
+node_modules/
+
+# Test artifacts
+playwright-report/
+test-results/
+tests/*.spec.ts-snapshots/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+src/data_complete.js

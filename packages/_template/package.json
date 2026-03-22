@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "id": "REPLACE-WITH-UUID",
+    "slug": "@your-username/your-package-name",
+    "author": "Your Name",
+    "version": "1.0.0",
+    "description": "A short description of what this package provides"
+  },
+  "projectTypes": [
+    {
+      "id": "your-type-id",
+      "icon": "🔧",
+      "name": {
+        "de": "Dein Projekttyp",
+        "en": "Your Project Type"
+      },
+      "description": {
+        "de": "Kurze Beschreibung, was dieser Typ tut",
+        "en": "Short description of what this type does"
+      },
+      "phases": [
+        {
+          "id": "create",
+          "icon": "✨",
+          "name": {
+            "de": "Erstellen",
+            "en": "Create"
+          },
+          "promptTemplate": "<role>You are an expert in [your domain].</role>\n\n<task>\n**Goal:** (describe what you want to achieve)\n**Context:** (relevant background information)\n**Constraints:** (any limitations or requirements)\n\nProvide a detailed, actionable response.\n</task>\n\n<rules>\n- Be specific and concrete\n- Use examples where helpful\n- Structure the response clearly\n</rules>\n\n<output_format>\nProvide your response as a structured document with clear headings.\n</output_format>"
+        },
+        {
+          "id": "review",
+          "icon": "🔍",
+          "name": {
+            "de": "Überprüfen",
+            "en": "Review"
+          },
+          "promptTemplate": "<role>You are a thorough reviewer specializing in [your domain].</role>\n\n<task>\nReview the following:\n**Content:** (paste or describe what to review)\n**Focus areas:** (what aspects to examine)\n**Standards:** (what quality criteria to apply)\n</task>\n\n<output_format>\nProvide findings as:\n1. Summary assessment\n2. Specific issues found (with severity)\n3. Concrete improvement suggestions\n</output_format>"
+        }
+      ]
+    }
+  ]
+}

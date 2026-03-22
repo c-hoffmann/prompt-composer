@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "validate": "python3 pre_build_validate.py",
+    "build": "python3 build.py",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:update-snapshots": "npx playwright test --update-snapshots",
+    "lighthouse": "lhci autorun",
+    "ci": "npm run validate && npm run build && npm run test && npm run lighthouse"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@lhci/cli": "^0.14.0"
+  }
+}

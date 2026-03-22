@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "id": "b7e3f1a2-9c45-4d8b-a1f6-8e2d3c4b5a69",
+    "slug": "@prompt-composer/ml-pipeline",
+    "author": "Prompt Composer Team",
+    "version": "1.0.0",
+    "description": "Prompt templates for machine learning workflows"
+  },
+  "projectTypes": [
+    {
+      "id": "ml-pipeline",
+      "icon": "🤖",
+      "name": {
+        "de": "ML-Pipeline",
+        "en": "ML Pipeline"
+      },
+      "description": {
+        "de": "Machine-Learning-Workflows von Daten bis Deployment",
+        "en": "Machine learning workflows from data to deployment"
+      },
+      "phases": [
+        {
+          "id": "data-prep",
+          "icon": "🔬",
+          "name": { "de": "Daten vorbereiten", "en": "Prepare Data" },
+          "promptTemplate": "<role>You are a senior data engineer specializing in ML data pipelines.</role>\n\n<task>\nPrepare a data pipeline for the following ML project:\n\n**Dataset:** (describe your data source, format, size)\n**Target variable:** (what are you predicting?)\n**Known issues:** (missing values, class imbalance, outliers?)\n\nProvide a complete data preparation plan including:\n1. Data loading and initial exploration (EDA)\n2. Cleaning strategy (missing values, duplicates, outliers)\n3. Feature engineering recommendations\n4. Train/validation/test split strategy\n5. Data validation checks\n</task>\n\n<rules>\n- Use pandas and scikit-learn conventions\n- Include code snippets for each step\n- Flag potential data leakage risks\n- Consider the target variable's distribution\n</rules>\n\n<output_format>\nStructured plan with code snippets, organized by pipeline stage.\n</output_format>"
+        },
+        {
+          "id": "model-train",
+          "icon": "⚡",
+          "name": { "de": "Modell trainieren", "en": "Train Model" },
+          "promptTemplate": "<role>You are a machine learning engineer with deep expertise in model selection and hyperparameter tuning.</role>\n\n<task>\nDesign a training pipeline for:\n\n**Problem type:** (classification / regression / clustering / NLP / CV)\n**Dataset size:** (rows × features)\n**Target metric:** (accuracy, F1, RMSE, AUC, etc.)\n**Compute budget:** (local CPU, GPU, cloud?)\n\nProvide:\n1. Baseline model recommendation with rationale\n2. 2-3 candidate models to compare\n3. Hyperparameter search strategy\n4. Cross-validation scheme\n5. Training code template\n</task>\n\n<rules>\n- Start with simple baselines before complex models\n- Always include a dummy/random baseline for comparison\n- Use scikit-learn, XGBoost, or PyTorch as appropriate\n- Include early stopping where applicable\n</rules>\n\n<output_format>\nComparison table of models + complete training script.\n</output_format>"
+        },
+        {
+          "id": "evaluate",
+          "icon": "📊",
+          "name": { "de": "Evaluieren", "en": "Evaluate" },
+          "promptTemplate": "<role>You are an ML evaluation specialist focused on rigorous, unbiased model assessment.</role>\n\n<task>\nEvaluate the trained model:\n\n**Model type:** (what model was trained?)\n**Problem type:** (classification / regression / etc.)\n**Primary metric:** (the metric that matters most)\n**Stakeholders:** (technical team / business / regulatory?)\n\nProvide:\n1. Comprehensive metrics report (not just accuracy)\n2. Confusion matrix analysis (for classification)\n3. Error analysis: where does the model fail?\n4. Fairness and bias assessment\n5. Confidence intervals / statistical significance\n6. Business impact translation\n</task>\n\n<rules>\n- Never rely on a single metric\n- Always compare against the baseline\n- Include visualizations (describe what to plot)\n- Flag any data leakage indicators\n</rules>\n\n<output_format>\nEvaluation report with metrics tables, charts, and actionable recommendations.\n</output_format>"
+        },
+        {
+          "id": "deploy",
+          "icon": "🚀",
+          "name": { "de": "Deployment", "en": "Deploy" },
+          "promptTemplate": "<role>You are an MLOps engineer specializing in production ML systems.</role>\n\n<task>\nPlan deployment for:\n\n**Model:** (what model, what framework?)\n**Serving requirements:** (batch / real-time / edge?)\n**Scale:** (requests per second, latency requirements)\n**Infrastructure:** (AWS / GCP / Azure / on-premise?)\n\nProvide:\n1. Deployment architecture diagram (describe)\n2. Model serialization and versioning strategy\n3. API design (endpoints, request/response format)\n4. Monitoring and alerting setup\n5. A/B testing or canary deployment plan\n6. Rollback strategy\n</task>\n\n<rules>\n- Include model versioning from day one\n- Monitor for data drift and model degradation\n- Design for graceful failure (fallback predictions)\n- Document the entire deployment pipeline\n</rules>\n\n<output_format>\nDeployment runbook with architecture, configuration, and monitoring setup.\n</output_format>"
+        }
+      ]
+    }
+  ]
+}

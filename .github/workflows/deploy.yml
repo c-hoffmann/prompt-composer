@@ -1,0 +1,71 @@
+# .github/workflows/deploy.yml
+# Deploy to GitHub Pages on push to main.
+#
+# The built prompt-composer.html is served directly from GitHub Pages.
+# Each user's data is stored in THEIR browser's localStorage
+# (origin-scoped to username.github.io) — completely private, no shared state.
+#
+# SETUP (one-time):
+# 1. Go to repo Settings → Pages
+# 2. Source: "GitHub Actions"
+# That's it. No gh-pages branch needed.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allow manual trigger
+
+# Required permissions for GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Validate + Build
+      - name: Build
+        run: python3 build.py
+
+      # Create the Pages directory structure
+      - name: Prepare Pages content
+        run: |
+          mkdir -p _site
+          cp dist/prompt-composer.html _site/index.html
+          # Also keep the named version for direct downloads
+          cp dist/prompt-composer.html _site/prompt-composer.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

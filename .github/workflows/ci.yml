@@ -1,0 +1,91 @@
+# .github/workflows/ci.yml
+# Complete CI pipeline for the single-file prompt builder tool.
+#
+# Pipeline stages:
+# 1. Pre-build validation (JS syntax, routes, i18n, IIFE self-refs)
+# 2. Build (assemble HTML from source files)
+# 3. E2E tests (Playwright: funnel flow, persistence, Safari fallback)
+# 4. Lighthouse audit (accessibility ≥90%, performance ≥95%)
+# 5. Visual regression (4 themes screenshot comparison)
+# 6. Release (on tag push: publish HTML + SHA-256 as GitHub Release)
+#
+# Total CI time with warm cache: ~3-5 minutes.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: Build, Test & Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # ── Pre-build validation ──
+      - name: Validate sources
+        run: python3 pre_build_validate.py
+
+      # ── Build ──
+      - name: Build HTML
+        run: |
+          python3 build.py
+          echo "Size: $(wc -c < dist/prompt-composer.html) bytes"
+
+      # ── E2E Tests (Playwright) ──
+      - name: Install Playwright
+        run: |
+          npm install -D @playwright/test
+          npx playwright install --with-deps chromium webkit
+
+      - name: Run E2E tests
+        run: npx playwright test
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+      # ── Lighthouse Audit ──
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.js
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      # ── SHA-256 Verification ──
+      - name: Compute SHA-256
+        run: |
+          sha256sum dist/prompt-composer.html > dist/prompt-composer.html.sha256
+          echo "SHA256=$(cut -d' ' -f1 dist/prompt-composer.html.sha256)" >> $GITHUB_ENV
+          cat dist/prompt-composer.html.sha256
+
+      # ── Release (on tag push only) ──
+      - name: Publish GitHub Release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/prompt-composer.html
+            dist/prompt-composer.html.sha256
+          generate_release_notes: true
+          body: |
+            **SHA-256**: `${{ env.SHA256 }}`
+            **Commit**: ${{ github.sha }}
