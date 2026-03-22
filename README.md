@@ -5,8 +5,13 @@
 [**→ Try it now**](https://c-hoffmann.github.io/prompt-composer/) · [Download HTML](https://github.com/c-hoffmann/prompt-composer/releases/latest)
 
 <p align="center">
-  <img src="docs/screenshot-neon.png" alt="Prompt Composer in Neon theme" width="800">
+  <img src="docs/screenshot-homepage-neon.png" alt="Prompt Composer Main Page" width="800">
 </p>
+
+<p align="center">
+  <img src="docs/screenshot-prompt-light.png" alt="Prompt Composer in Neon theme" width="800">
+</p>
+
 
 ---
 
