@@ -3,7 +3,7 @@
 #
 # The built prompt-composer.html is served directly from GitHub Pages.
 # Each user's data is stored in THEIR browser's localStorage
-# (origin-scoped to username.github.io) — completely private, no shared state.
+# (origin-scoped to thekryz.github.io) — completely private, no shared state.
 #
 # SETUP (one-time):
 # 1. Go to repo Settings → Pages
@@ -15,7 +15,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch: # Allow manual trigger
 
 # Required permissions for GitHub Pages
 permissions:
@@ -36,11 +36,11 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       # Validate + Build
       - name: Build
