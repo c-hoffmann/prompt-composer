@@ -20,7 +20,7 @@ The easiest way to contribute is by creating and sharing prompt packages:
 
 ```bash
 # Clone
-git clone https://github.com/thekryz/prompt-composer.git
+git clone https://github.com/c-hoffmann/prompt-composer.git
 cd prompt-composer
 
 # Build (requires Python 3.8+)

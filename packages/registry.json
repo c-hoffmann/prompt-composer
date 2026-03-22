@@ -14,7 +14,7 @@
       "version": "1.0.0",
       "types": 1,
       "phases": 4,
-      "url": "https://raw.githubusercontent.com/thekryz/prompt-composer/main/packages/examples/ml-pipeline.json"
+      "url": "https://raw.githubusercontent.com/c-hoffmann/prompt-composer/main/packages/examples/ml-pipeline.json"
     }
   ]
 }

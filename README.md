@@ -2,7 +2,7 @@
 
 **A guided tool for building structured AI prompts.** No server, no login, no tracking — runs entirely in your browser.
 
-[**→ Try it now**](https://thekryz.github.io/prompt-composer/) · [Download HTML](https://github.com/thekryz/prompt-composer/releases/latest)
+[**→ Try it now**](https://c-hoffmann.github.io/prompt-composer/) · [Download HTML](https://github.com/c-hoffmann/prompt-composer/releases/latest)
 
 <p align="center">
   <img src="docs/screenshot-neon.png" alt="Prompt Composer in Neon theme" width="800">
@@ -39,10 +39,10 @@ Every prompt uses XML-tag structure (`<role>`, `<task>`, `<rules>`, `<output_for
 ## Quick start
 
 ### Online (recommended)
-Visit [**thekryz.github.io/prompt-composer/**](https://thekryz.github.io/prompt-composer/) — that's it.
+Visit [**c-hoffmann.github.io/prompt-composer/**](https://c-hoffmann.github.io/prompt-composer/) — that's it.
 
 ### Offline
-1. Download `prompt-composer.html` from the [latest release](https://github.com/thekryz/prompt-composer/releases/latest)
+1. Download `prompt-composer.html` from the [latest release](https://github.com/c-hoffmann/prompt-composer/releases/latest)
 2. Double-click to open in your browser
 3. Start building prompts
 
@@ -90,7 +90,7 @@ Export → share the JSON file → others import via 🧩 → Install.
 ## Development
 
 ```bash
-git clone https://github.com/thekryz/prompt-composer.git
+git clone https://github.com/c-hoffmann/prompt-composer.git
 cd prompt-composer
 
 # Build

@@ -3,7 +3,7 @@
 #
 # The built prompt-composer.html is served directly from GitHub Pages.
 # Each user's data is stored in THEIR browser's localStorage
-# (origin-scoped to thekryz.github.io) — completely private, no shared state.
+# (origin-scoped to c-hoffmann.github.io) — completely private, no shared state.
 #
 # SETUP (one-time):
 # 1. Go to repo Settings → Pages
