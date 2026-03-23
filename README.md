@@ -144,4 +144,4 @@ prompt-composer/
 
 ## License
 
-MIT
+AGPL
