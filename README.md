@@ -144,4 +144,4 @@ prompt-composer/
 
 ## License
 
-AGPL
+AGPL v3
